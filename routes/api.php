@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\GradeController;
 use App\Http\Controllers\Api\EnrollmentController;
 use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\AttendanceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('enrollments')->group(function () {
          Route::post('/', [EnrollmentController::class, 'store']);
           Route::delete('/{id}', [EnrollmentController::class, 'destroy']);
+    });
+    Route::prefix('attendance')->group(function () {
+          Route::get('/', [AttendanceController::class, 'index']);
+        Route::post('/check-in', [AttendanceController::class, 'check_in']);
+        Route::post('/check-out/{attendance}', [AttendanceController::class, 'check_out']);
     });
 
     Route::post('/logout', [AuthController::class, 'logout']);
