@@ -19,7 +19,7 @@ class CreateStudentDTO
             $request->name,
             $request->email,
             $request->phone,
-            bcrypt($request->password),
+            $request->password,
             $request->status ?? 'active'
         );
     }

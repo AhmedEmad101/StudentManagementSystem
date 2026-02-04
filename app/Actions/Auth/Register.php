@@ -1,20 +1,25 @@
 <?php
-
 namespace App\Actions\Auth;
 
-use App\Models\Student;
-use Illuminate\Support\Facades\Hash;
+use App\DTOs\CreateStudentDTO;
+use App\Repositories\StudentRepository;
+use Illuminate\Support\Facades\DB;
 
 class Register
 {
-    public function execute(array $data): Student
+    public function __construct(protected StudentRepository $repository) {}
+
+    public function execute(CreateStudentDTO $dto)
     {
-        return Student::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'phone'    => $data['phone'],
-            'password' => Hash::make($data['password']),
-            'status'   => 'active',
-        ]);
+        return DB::transaction(function () use ($dto) {
+            return $this->repository->store([
+                'name' => $dto->name,
+                'email' => $dto->email,
+                'phone' => $dto->phone,
+                'password' => $dto->password,
+                'status' => $dto->status,
+                'role' => 'student',
+            ]);
+        });
     }
 }

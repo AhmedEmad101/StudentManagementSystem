@@ -8,7 +8,7 @@ class StoreStudentRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return auth()->user()?->role === 'admin';
+        return true;
     }
 
     public function rules(): array
