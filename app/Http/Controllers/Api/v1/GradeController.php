@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\v1;
 use App\Actions\Grade\ShowGrade;
 use App\Actions\Grade\CreateGrade;
 use App\Actions\Grade\UpdateGrade;

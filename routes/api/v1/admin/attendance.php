@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\AttendanceController;
+use App\Http\Controllers\Api\v1\AttendanceController;
 
 Route::middleware(['auth:sanctum', 'admin'])
     ->prefix('admin/attendance')

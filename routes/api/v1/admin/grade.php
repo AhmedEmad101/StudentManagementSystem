@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\GradeController;
+use App\Http\Controllers\Api\v1\GradeController;
 Route::middleware(['admin'])
     ->prefix('api/v1/')
     ->name('admin.')

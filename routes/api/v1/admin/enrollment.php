@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\EnrollmentController;
+use App\Http\Controllers\Api\v1\EnrollmentController;
 
 Route::middleware(['auth:sanctum', 'admin'])
     ->prefix('admin/enrollments')

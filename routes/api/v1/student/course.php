@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\v1\CourseController;
 
 Route::middleware('auth:sanctum')
     ->prefix('student/courses')

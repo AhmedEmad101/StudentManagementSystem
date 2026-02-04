@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\v1\AuthController;
 use Illuminate\Support\Facades\Route;
 
 
