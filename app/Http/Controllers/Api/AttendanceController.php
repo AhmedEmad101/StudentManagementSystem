@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Actions\Attendance\CreateAttendance;
 use App\Actions\Attendance\UpdateAttendance;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AttendanceResource;
 use App\Models\Attendance;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
@@ -27,28 +28,24 @@ class AttendanceController extends Controller
 
         $attendances = $query->paginate(10);
 
-        return $this->successResponse($attendances);
+        return $this->successResponse(AttendanceResource::collection($attendances));
     }
     public function check_in(CreateAttendance $create_attendance)
     {
         $attendance = $create_attendance->execute();
 
         return $this->successResponse(
-            $attendance,
+            new AttendanceResource($attendance),
             'Checked in successfully',
             201
         );
     }
     public function check_out(Attendance $attendance, UpdateAttendance $update_attendance)
     {
-        if ($attendance->user_id !== auth()->id()) {
-            abort(403);
-        }
-
         $updated = $update_attendance->execute($attendance);
 
         return $this->successResponse(
-            $updated,
+            new AttendanceResource($updated),
             'Checked out successfully'
         );
     }

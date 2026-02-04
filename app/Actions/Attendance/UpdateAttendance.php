@@ -15,6 +15,10 @@ class UpdateAttendance
 
     public function execute(Attendance $attendance)
     {
+         if ($attendance->user_id !== auth()->id() || auth()->user()->role != 'Admin') {
+            abort(403);
+        }
+
         return DB::transaction(function () use ($attendance) {
 
             if ($attendance->check_out_at) {
