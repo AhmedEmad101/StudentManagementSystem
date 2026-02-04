@@ -15,9 +15,12 @@ class UpdateAttendance
 
     public function execute(Attendance $attendance)
     {
-         if ($attendance->user_id !== auth()->id() || auth()->user()->role != 'Admin') {
-            abort(403);
-        }
+          if (!(auth()->user()->can('update', $attendance)))
+            {
+                throw ValidationException::withMessages([
+                    'autherization' => 'unautherized attendance update',
+                ]);
+            }
 
         return DB::transaction(function () use ($attendance) {
 

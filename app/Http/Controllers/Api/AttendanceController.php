@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Actions\Attendance\CreateAttendance;
+use App\Actions\Attendance\ShowAttendance;
 use App\Actions\Attendance\UpdateAttendance;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AttendanceResource;
@@ -29,6 +30,11 @@ class AttendanceController extends Controller
         $attendances = $query->paginate(10);
 
         return $this->successResponse(AttendanceResource::collection($attendances));
+    }
+    public function show(Attendance $attendance,ShowAttendance $show_attendance)
+    {
+        $attendance = $show_attendance->execute($attendance);
+        return $this->successResponse(new AttendanceResource($attendance));
     }
     public function check_in(CreateAttendance $create_attendance)
     {

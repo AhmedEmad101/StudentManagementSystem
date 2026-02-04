@@ -57,4 +57,9 @@ class StudentController extends Controller
 
         return $this->successResponse(StudentResource::collection($students));
     }
+    public function me()
+    {
+        $student = auth()->user();
+        return $this->successResponse(new StudentResource($student));
+    }
 }
