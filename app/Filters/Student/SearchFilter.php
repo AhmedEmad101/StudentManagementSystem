@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Filters\Student;
 
-use App\Interfaces\StudentFilterInterface;
 use App\DTOs\StudentFilterDTO;
+use App\Interfaces\StudentFilterInterface;
 use Illuminate\Database\Eloquent\Builder;
 
 class SearchFilter implements StudentFilterInterface
@@ -15,7 +16,7 @@ class SearchFilter implements StudentFilterInterface
 
         $query->where(function ($q) use ($dto) {
             $q->where('name', 'like', "%{$dto->search}%")
-              ->orWhere('email', 'like', "%{$dto->search}%");
+                ->orWhere('email', 'like', "%{$dto->search}%");
         });
     }
 }

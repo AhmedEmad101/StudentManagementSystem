@@ -7,8 +7,11 @@ use App\Http\Requests\StoreCourseRequest;
 class CreateCourseDTO
 {
     public string $title;
+
     public string $code;
+
     public ?string $description;
+
     public int $hours;
 
     public function __construct(string $title, string $code, ?string $description, int $hours)

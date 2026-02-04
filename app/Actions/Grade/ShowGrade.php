@@ -11,7 +11,8 @@ class ShowGrade
 
     public function execute(Grade $grade)
     {
-         $grade = $this->gradeRepository->show($grade->id);
+        $grade = $this->gradeRepository->show($grade->id);
+
         return $grade;
     }
 }

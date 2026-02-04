@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Enrollment extends Model
 {
     protected $fillable = [
-    'user_id',
-    'course_id',
-    'enrolled_at',
-];
+        'user_id',
+        'course_id',
+        'enrolled_at',
+    ];
 
-  public function student()
+    public function student()
     {
         return $this->belongsTo(User::class, 'student_id');
     }
+
     public function course()
     {
         return $this->belongsTo(Course::class, 'course_id');
     }
-
 }

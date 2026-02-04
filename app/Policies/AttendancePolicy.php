@@ -4,21 +4,16 @@ namespace App\Policies;
 
 use App\Models\Attendance;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class AttendancePolicy
 {
-   
     public function view(User $user, Attendance $attendance): bool
     {
-           return $user->role === 'admin'|| $attendance->user_id === $user->id;
+        return $user->role === 'admin' || $attendance->user_id === $user->id;
     }
 
-  
     public function update(User $user, Attendance $attendance): bool
     {
-        return $user->role === 'admin'|| $attendance->user_id === $user->id;
+        return $user->role === 'admin' || $attendance->user_id === $user->id;
     }
-
-  
 }

@@ -1,7 +1,7 @@
 <?php
+
 namespace App\DTOs;
 
-use App\Http\Requests\FilterStudentRequest;
 use Illuminate\Http\Request;
 
 class AttendanceFilterDTO
@@ -13,7 +13,7 @@ class AttendanceFilterDTO
 
     public static function fromRequest(Request $request): self
     {
-       
+
         return new self(
             search: $data['search'] ?? null,
             status: $data['status'] ?? null,

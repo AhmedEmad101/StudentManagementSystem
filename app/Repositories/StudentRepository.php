@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Repositories;
 
-use App\Models\User;
 use App\Interfaces\StudentInterface;
+use App\Models\User;
+
 class StudentRepository implements StudentInterface
 {
     public function index(array $relationships = [], int $pagination = 10)
@@ -23,6 +25,7 @@ class StudentRepository implements StudentInterface
     public function update(User $student, array $data)
     {
         $student->update($data);
+
         return $student;
     }
 

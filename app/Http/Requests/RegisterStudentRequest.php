@@ -14,7 +14,7 @@ class RegisterStudentRequest extends FormRequest
         return true;
     }
 
-     public function rules(): array
+    public function rules(): array
     {
         return [
             'name' => ['required', 'string', 'max:255'],
@@ -37,7 +37,7 @@ class RegisterStudentRequest extends FormRequest
                 'required',
                 'string',
                 'min:8',
-                'confirmed', 
+                'confirmed',
             ],
         ];
     }

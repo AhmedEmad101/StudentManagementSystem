@@ -14,13 +14,13 @@ class AttendanceResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return 
+        return
         [
-            'user_id'=>$this->user_id,
-            'date'=>$this->date,
-            'check_in_at'=>$this->check_in_at,
-            'check_out_at'=>$this->check_in_at,
-            'status'=>$this->status
+            'user_id' => $this->user_id,
+            'date' => $this->date,
+            'check_in_at' => $this->check_in_at,
+            'check_out_at' => $this->check_in_at,
+            'status' => $this->status,
         ];
     }
 }

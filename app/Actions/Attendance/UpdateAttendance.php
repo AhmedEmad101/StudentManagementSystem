@@ -15,12 +15,11 @@ class UpdateAttendance
 
     public function execute(Attendance $attendance)
     {
-          if (!(auth()->user()->can('update', $attendance)))
-            {
-                throw ValidationException::withMessages([
-                    'autherization' => 'unautherized attendance update',
-                ]);
-            }
+        if (! (auth()->user()->can('update', $attendance))) {
+            throw ValidationException::withMessages([
+                'autherization' => 'unautherized attendance update',
+            ]);
+        }
 
         return DB::transaction(function () use ($attendance) {
 

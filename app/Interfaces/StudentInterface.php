@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Interfaces;
+
 use App\Models\User;
+
 interface StudentInterface
 {
     public function index(array $relationships = [], int $pagination = 5);

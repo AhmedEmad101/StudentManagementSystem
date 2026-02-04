@@ -4,8 +4,8 @@ namespace App\Actions\Grade;
 
 use App\Models\Grade;
 use App\Repositories\GradeRepository;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Support\Facades\DB;
 
 class DeleteGrade
 {

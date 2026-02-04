@@ -14,7 +14,7 @@ class GradeRepository implements GradeInterface
 
     public function show(int $id)
     {
-        return Grade::with(['student', 'course'])->where('user_id',auth()->id())->findOrFail($id);
+        return Grade::with(['student', 'course'])->where('user_id', auth()->id())->findOrFail($id);
     }
 
     public function store(array $data)
@@ -26,6 +26,7 @@ class GradeRepository implements GradeInterface
     {
         $grade = Grade::findOrFail($id);
         $grade->update($data);
+
         return $grade;
     }
 

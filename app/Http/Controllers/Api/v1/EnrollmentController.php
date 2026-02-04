@@ -37,7 +37,6 @@ class EnrollmentController extends Controller
         }
     }
 
-
     public function destroy(
         int $id,
         DeleteEnrollment $deleteEnrollment

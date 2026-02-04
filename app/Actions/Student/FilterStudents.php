@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Actions\Student;
 
 use App\DTOs\StudentFilterDTO;
-use App\Filters\Student\StudentFilterExecuter;
-use App\Models\User;
 use App\Filters\Student\SearchFilter;
 use App\Filters\Student\StatusFilter;
+use App\Filters\Student\StudentFilterExecuter;
+use App\Models\User;
 
 class FilterStudents
 {

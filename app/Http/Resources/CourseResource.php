@@ -14,7 +14,7 @@ class CourseResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-          return [
+        return [
             'id' => $this->id,
             'title' => $this->title,
             'code' => $this->code,
@@ -23,7 +23,7 @@ class CourseResource extends JsonResource
             'created_at' => $this->created_at?->toDateTimeString(),
             'updated_at' => $this->updated_at?->toDateTimeString(),
             'students' => $this->whenLoaded('students', function () {
-                return $this->students->map(fn($student) => [
+                return $this->students->map(fn ($student) => [
                     'id' => $student->id,
                     'name' => $student->name,
                     'email' => $student->email,

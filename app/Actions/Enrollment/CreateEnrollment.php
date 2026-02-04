@@ -21,8 +21,8 @@ class CreateEnrollment
 
         return Enrollment::create([
             'user_id' => $studentId,
-            'course_id'  => $courseId,
-            'enrolled_at'=> now(),
+            'course_id' => $courseId,
+            'enrolled_at' => now(),
         ]);
     }
 }

@@ -26,6 +26,7 @@ class AttendanceRepository implements AttendanceInterface
     {
         $attendance = Attendance::findOrFail($id);
         $attendance->update($data);
+
         return $attendance;
     }
 

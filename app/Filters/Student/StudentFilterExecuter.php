@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Filters\Student;
+
 use Illuminate\Database\Eloquent\Builder;
 
 class StudentFilterExecuter

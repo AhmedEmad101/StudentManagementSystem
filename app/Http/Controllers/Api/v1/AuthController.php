@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Actions\Auth\Login;
-use App\Actions\Auth\Register;
 use App\Actions\Auth\Logout;
+use App\Actions\Auth\Register;
 use App\DTOs\CreateStudentDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
@@ -35,9 +35,11 @@ class AuthController extends Controller
             return $this->errorResponse($e->getMessage(), 500);
         }
     }
-    public function register(StoreStudentRequest $request,Register $register_student)
+
+    public function register(StoreStudentRequest $request, Register $register_student)
     {
-       $student = $register_student->execute(CreateStudentDTO::fromRequest($request));
+        $student = $register_student->execute(CreateStudentDTO::fromRequest($request));
+
         return $this->successResponse(new StudentResource($student), 'you created your account successfully', 201);
     }
 

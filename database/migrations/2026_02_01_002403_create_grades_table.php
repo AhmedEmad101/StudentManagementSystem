@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('grades', function (Blueprint $table) {
-             $table->id();
+            $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('course_id')->constrained()->cascadeOnDelete();
             $table->string('grade_value'); // 0-100 OR A/B/C
             $table->text('notes')->nullable();
             $table->timestamps();
 
-             $table->unique(['user_id', 'course_id']);
+            $table->unique(['user_id', 'course_id']);
         });
     }
 

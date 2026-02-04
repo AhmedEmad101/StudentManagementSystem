@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Actions\Student;
 
 use App\DTOs\UpdateStudentDTO;

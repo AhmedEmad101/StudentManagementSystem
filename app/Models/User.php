@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -48,7 +49,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-     public function enrollments()
+
+    public function enrollments()
     {
         return $this->hasMany(Enrollment::class, 'user_id');
     }
@@ -56,17 +58,17 @@ class User extends Authenticatable
     public function courses()
     {
         return $this->belongsToMany(Course::class, 'enrollments', 'user_id', 'course_id')
-                    ->withTimestamps()
-                    ->withPivot('enrolled_at');
+            ->withTimestamps()
+            ->withPivot('enrolled_at');
     }
 
     public function grades()
     {
         return $this->hasMany(Grade::class, 'user_id');
     }
-    public function attendances()
-{
-    return $this->hasMany(Attendance::class, 'user_id');
-}
 
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class, 'user_id');
+    }
 }

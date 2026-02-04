@@ -1,8 +1,8 @@
 <?php
+
 namespace App\DTOs;
 
 use App\Http\Requests\UpdateStudentRequest;
-use App\Models\User;
 
 class UpdateStudentDTO
 {
@@ -33,7 +33,9 @@ class UpdateStudentDTO
             'phone' => $this->phone,
             'status' => $this->status,
         ];
-        if ($this->password) $data['password'] = $this->password;
+        if ($this->password) {
+            $data['password'] = $this->password;
+        }
 
         return $data;
     }

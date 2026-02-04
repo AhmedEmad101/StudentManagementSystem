@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Grade;
 use App\Models\Enrollment;
+use App\Models\Grade;
 use Illuminate\Database\Seeder;
 
 class GradeSeeder extends Seeder

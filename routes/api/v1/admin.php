@@ -1,4 +1,5 @@
 <?php
+
 require __DIR__.'/admin/student.php';
 require __DIR__.'/admin/course.php';
 require __DIR__.'/admin/grade.php';
