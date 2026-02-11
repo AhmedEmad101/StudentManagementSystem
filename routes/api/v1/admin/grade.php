@@ -4,7 +4,6 @@ use App\Http\Controllers\Api\v1\GradeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['admin'])
-    ->prefix('api/v1/')
     ->name('admin.')
     ->group(function () {
         Route::prefix('grades')->group(function () {
