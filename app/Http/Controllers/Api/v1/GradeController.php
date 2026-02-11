@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Actions\Grade\CreateGrade;
 use App\Actions\Grade\DeleteGrade;
+use App\Actions\Grade\IndexGrade;
 use App\Actions\Grade\ShowGrade;
 use App\Actions\Grade\UpdateGrade;
 use App\DTOs\CreateGradeDTO;
+use App\DTOs\GradeFilterDTO;
 use App\DTOs\UpdateGradeDTO;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FilterGradeRequest;
 use App\Http\Requests\StoreGradeRequest;
 use App\Http\Requests\UpdateGradeRequest;
 use App\Http\Resources\GradeResource;
@@ -20,9 +23,9 @@ class GradeController extends Controller
 {
     use ApiResponseTrait;
 
-    public function index(GradeRepository $repository)
+    public function index(IndexGrade $grade, FilterGradeRequest $request)
     {
-        $grades = $repository->index(['student', 'course']);
+        $grades = $grade->execute(GradeFilterDTO::fromRequest($request), 10);
 
         return $this->successResponse(GradeResource::collection($grades));
     }

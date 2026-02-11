@@ -2,21 +2,21 @@
 
 namespace App\DTOs;
 
-use Illuminate\Http\Request;
-
+use App\Http\Requests\FilterAttendanceRequest;
+use Carbon\Carbon;
 class AttendanceFilterDTO
 {
     public function __construct(
-        public readonly ?date $search,
-        public readonly ?date $status,
+        public readonly ?Carbon $date,
+        public readonly ?int $user_id,
     ) {}
-
-    public static function fromRequest(Request $request): self
+    public static function fromRequest(FilterAttendanceRequest $request): self
     {
+        $data = $request->validated();
 
         return new self(
-            search: $data['search'] ?? null,
-            status: $data['status'] ?? null,
+            $data['date'] ?? null,
+           $data['user_id'] ?? null,
         );
     }
 }
