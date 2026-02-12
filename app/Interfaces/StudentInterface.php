@@ -8,7 +8,7 @@ interface StudentInterface
 {
     public function index(array $relationships = [], int $pagination = 5);
 
-    public function show(User $user);
+    public function show(int $id);
 
     public function store(array $array);
 

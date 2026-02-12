@@ -7,13 +7,13 @@ use App\Filters\Student\SearchFilter;
 use App\Filters\Student\StatusFilter;
 use App\Filters\Student\StudentFilterExecuter;
 use App\Models\User;
+use App\Repositories\StudentRepository;
 
-class FilterStudents
-{
+class IndexStudent
+{public function __construct(protected StudentRepository $student_repository) {}
     public function execute(StudentFilterDTO $student_dto, int $pagination = 5)
     {
-        $query = User::query()
-            ->where('role', 'student');
+        $query = $this->student_repository->index(['grade'], $pagination)->getCollection()->toQuery();
 
         $filters = new StudentFilterExecuter([
             new SearchFilter,

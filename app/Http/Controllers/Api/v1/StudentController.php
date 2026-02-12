@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Actions\Student\CreateStudent;
 use App\Actions\Student\DeleteStudent;
-use App\Actions\Student\FilterStudents;
+use App\Actions\Student\ShowStudent;
+use App\Actions\Student\IndexStudent;
 use App\Actions\Student\UpdateStudent;
 use App\DTOs\CreateStudentDTO;
 use App\DTOs\StudentFilterDTO;
@@ -22,16 +23,15 @@ class StudentController extends Controller
 {
     use ApiResponseTrait;
 
-    public function index(StudentRepository $repository)
+    public function index(IndexStudent $student,FilterStudentRequest $request)
     {
-        $students = $repository->index([], 10);
-
+        $students = $student->execute(StudentFilterDTO::fromRequest($request), 10);
         return $this->successResponse(StudentResource::collection($students));
     }
 
-    public function show(User $student)
-    {
-        return $this->successResponse(new StudentResource($student));
+    public function show(User $student, ShowStudent $show_student)
+    {    $student_data = $show_student->execute($student);
+        return $this->successResponse(new StudentResource($student_data));
     }
 
     public function store(StoreStudentRequest $request, CreateStudent $createStudent)

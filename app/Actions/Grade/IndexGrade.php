@@ -7,13 +7,12 @@ use App\Filters\Grade\StudentFilter;
 use App\Filters\Grade\CourseFilter;
 use App\Filters\Grade\GradeFilterExecuter;
 use App\Models\Grade;
-
+use App\Repositories\GradeRepository;
 class IndexGrade
-{
+{public function __construct(protected GradeRepository $gradeRepository) {}
     public function execute(GradeFilterDTO $grade_dto, int $pagination = 5)
     {
-        $query = Grade::query()
-            ->with(['course', 'student']);
+          $query = $this->gradeRepository->index(['student', 'course'],$pagination)->getCollection()->toQuery();
 
         $filters = new GradeFilterExecuter([
             new StudentFilter,

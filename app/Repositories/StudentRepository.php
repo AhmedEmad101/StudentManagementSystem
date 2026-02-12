@@ -12,9 +12,10 @@ class StudentRepository implements StudentInterface
         return User::with($relationships)->where('role', 'student')->paginate($pagination);
     }
 
-    public function show(User $student)
+    public function show($id)
     {
-        return $student;
+       $user = User::with(['grades'])->where('id',$id)->firstOrFail();
+       return $user;
     }
 
     public function store(array $data)
