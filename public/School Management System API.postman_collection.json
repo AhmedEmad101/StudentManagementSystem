@@ -1,17 +1,845 @@
 {
   "info": {
-    "_postman_id": "4a9e123c-e1a3-422b-b28b-079a4eb306a0",
-    "name": "School Management System API",
+    "_postman_id": "fd26dfb6-b26c-435e-8946-a4dd2d968f0a",
+    "name": "beetleware_students_collection",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "21807492",
-    "_collection_link": "https://go.postman.co/collection/21807492-4a9e123c-e1a3-422b-b28b-079a4eb306a0?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/21807492-fd26dfb6-b26c-435e-8946-a4dd2d968f0a?source=collection_link"
   },
   "item": [
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Attendance",
+          "item": [
+            {
+              "name": "Get All Attendance",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"date_from\":\"01/02/2026\",\r\n    \"date_to\":\"01/02/2026\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/admin/attendance",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "attendance"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": null,
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Attendance By Student",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/admin/attendance/students/1",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "attendance",
+                    "students",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Courses",
+          "item": [
+            {
+              "name": "Get Courses",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/admin/courses",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "courses"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Course",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Math\",\n  \"code\": \"MTH101\"\n}"
+                },
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/admin/courses",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "courses"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Course",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/admin/courses/1",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "courses",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Course",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/admin/courses/1",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "courses",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Enrollments",
+          "item": [
+            {
+              "name": "Create Enrollment",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/admin/enrollments",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "enrollments"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Enrollment",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/admin/enrollments/1",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "enrollments",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Students",
+          "item": [
+            {
+              "name": "Get Students",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/admin/students",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "students"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Filter Students",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/admin/students/filter",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "students",
+                    "filter"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Show Student",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/admin/students/1",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "students",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Grades",
+          "item": [
+            {
+              "name": "Get Grades",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"user_id\":2,\r\n    \"course_id\":2\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/grades",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "grades"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Grade",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/grades",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "grades"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Grade",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/grades/1",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "grades",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Grade",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{admin_token}}",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/grades/1",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "grades",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Student",
+      "item": [
+        {
+          "name": "Attendance",
+          "item": [
+            {
+              "name": "Check In",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{student_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{student_token}}",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/student/attendance/check-in",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "student",
+                    "attendance",
+                    "check-in"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Check Out",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{student_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{student_token}}",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/student/attendance/check-out/1",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "student",
+                    "attendance",
+                    "check-out",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Courses",
+          "item": [
+            {
+              "name": "My Courses",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{student_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{student_token}}",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/student/courses",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "student",
+                    "courses"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Grades",
+          "item": [
+            {
+              "name": "My Grades",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{student_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{student_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/student/grades",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "student",
+                    "grades"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Profile",
+          "item": [
+            {
+              "name": "Me",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{student_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{student_token}}",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{beetleware_api_v1_base_url}}/student/me",
+                  "host": [
+                    "{{beetleware_api_v1_base_url}}"
+                  ],
+                  "path": [
+                    "student",
+                    "me"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "Auth",
       "item": [
         {
           "name": "Admin Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Login successful\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "const json = pm.response.json();\r",
+                  "\r",
+                  "// 🔑 token location\r",
+                  "const token = json?.data?.token;\r",
+                  "\r",
+                  "if (!token) {\r",
+                  "    throw new Error(\"Token not found in response\");\r",
+                  "}\r",
+                  "\r",
+                  "// 🎯 detect role automatically\r",
+                  "const role = json?.data?.user?.role;\r",
+                  "\r",
+                  "if (role === \"admin\") {\r",
+                  "    pm.environment.set(\"admin_token\", token);\r",
+                  "    pm.globals.set(\"admin_token\", token);\r",
+                  "    console.log(\"Admin token saved:\", token);\r",
+                  "} else {\r",
+                  "    pm.environment.set(\"student_token\", token);\r",
+                  "    pm.globals.set(\"student_token\", token);\r",
+                  "    console.log(\"Student token saved:\", token);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "bearer",
@@ -35,9 +863,9 @@
               "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"123456\"\n}"
             },
             "url": {
-              "raw": "{{base_url}}/login",
+              "raw": "{{beetleware_api_v1_base_url}}/login",
               "host": [
-                "{{base_url}}"
+                "{{beetleware_api_v1_base_url}}"
               ],
               "path": [
                 "login"
@@ -48,6 +876,43 @@
         },
         {
           "name": "Student Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Login successful\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "const json = pm.response.json();\r",
+                  "\r",
+                  "// 🔑 token location\r",
+                  "const token = json?.data?.token;\r",
+                  "\r",
+                  "if (!token) {\r",
+                  "    throw new Error(\"Token not found in response\");\r",
+                  "}\r",
+                  "\r",
+                  "// 🎯 detect role automatically\r",
+                  "const role = json?.data?.user?.role;\r",
+                  "\r",
+                  "if (role === \"admin\") {\r",
+                  "    pm.environment.set(\"admin_token\", token);\r",
+                  "    pm.globals.set(\"admin_token\", token);\r",
+                  "    console.log(\"Admin token saved:\", token);\r",
+                  "} else {\r",
+                  "    pm.environment.set(\"student_token\", token);\r",
+                  "    pm.globals.set(\"student_token\", token);\r",
+                  "    console.log(\"Student token saved:\", token);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "bearer",
@@ -71,9 +936,9 @@
               "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"123456\"\n}"
             },
             "url": {
-              "raw": "{{base_url}}/login",
+              "raw": "{{beetleware_api_v1_base_url}}/login",
               "host": [
-                "{{base_url}}"
+                "{{beetleware_api_v1_base_url}}"
               ],
               "path": [
                 "login"
@@ -113,9 +978,9 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/register",
+              "raw": "{{beetleware_api_v1_base_url}}/register",
               "host": [
-                "{{base_url}}"
+                "{{beetleware_api_v1_base_url}}"
               ],
               "path": [
                 "register"
@@ -125,736 +990,20 @@
           "response": []
         }
       ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "beetleware_api_v1_base_url",
+      "value": "http://studentmanagementsystem.test/api/v1"
     },
     {
-      "name": "Admin",
-      "item": [
-        {
-          "name": "Students",
-          "item": [
-            {
-              "name": "List Students",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{admin_token}}"
-                  }
-                ],
-                "url": {
-                  "raw": "{{base_url}}/admin/students?page=1",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "students"
-                  ],
-                  "query": [
-                    {
-                      "key": "page",
-                      "value": "1"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "Create Student",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{admin_token}}"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"Ahmed Emad\",\n  \"email\": \"ahmed@test.com\",\n  \"phone\": \"01000000000\",\n  \"password\": \"123456\",\n  \"status\": \"active\"\n}"
-                },
-                "url": {
-                  "raw": "{{base_url}}/admin/students",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "students"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "Update Student",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n  \"name\": \"Ahmed Emad\",\r\n  \"email\": \"ahmed@test.com\",\r\n  \"phone\": \"01000000000\",\r\n  \"password\": \"123456\",\r\n  \"status\": \"active\"\r\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{base_url}}/admin/students/3",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "students",
-                    "3"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "Delete Student",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "header": [],
-                "url": {
-                  "raw": "{{base_url}}/admin/students/2",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "students",
-                    "2"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "show student",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{student_token}}"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "url": {
-                  "raw": "{{base_url}}/admin/students/1",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "students",
-                    "1"
-                  ]
-                }
-              },
-              "response": []
-            }
-          ]
-        },
-        {
-          "name": "Courses",
-          "item": [
-            {
-              "name": "List Courses",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{admin_token}}"
-                  }
-                ],
-                "url": {
-                  "raw": "{{base_url}}/admin/courses",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "courses"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "Create Course",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{admin_token}}"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"title\": \"Algorithms\",\n  \"code\": \"CS101\",\n  \"hours\": 3\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{base_url}}/admin/courses",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "courses"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "show course",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{student_token}}"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "url": {
-                  "raw": "{{base_url}}/admin/courses/1",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "courses",
-                    "1"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "Update Course",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{student_token}}"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": " {\r\n        \"id\": 1,\r\n        \"title\": \"Laravel Backend\",\r\n        \"code\": \"LAR101\",\r\n        \"description\": \"Laravel fundamentals\",\r\n        \"hours\": 40,\r\n        \"created_at\": \"2026-02-02 02:23:59\",\r\n        \"updated_at\": null\r\n    }",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{base_url}}/admin/courses/1",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "courses",
-                    "1"
-                  ]
-                }
-              },
-              "response": []
-            }
-          ]
-        },
-        {
-          "name": "Attendance",
-          "item": [
-            {
-              "name": "View Attendance",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{admin_token}}"
-                  }
-                ],
-                "url": {
-                  "raw": "{{base_url}}/admin/attendance",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "attendance"
-                  ]
-                }
-              },
-              "response": []
-            }
-          ]
-        },
-        {
-          "name": "Enrollment",
-          "item": [
-            {
-              "name": "create enrollment",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n    \"student_id\": 1,\r\n    \"course_id\": 2\r\n}\r\n",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{base_url}}/admin/enrollments",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "enrollments"
-                  ],
-                  "query": [
-                    {
-                      "key": "",
-                      "value": null,
-                      "type": "text",
-                      "disabled": true
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "delete enrollment",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "header": [],
-                "url": {
-                  "raw": "{{base_url}}/admin/enrollments/4",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "enrollments",
-                    "4"
-                  ]
-                }
-              },
-              "response": []
-            }
-          ]
-        }
-      ]
+      "key": "admin_token",
+      "value": ""
     },
     {
-      "name": "Student",
-      "item": [
-        {
-          "name": "Profile",
-          "item": [
-            {
-              "name": "My Profile",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{student_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{student_token}}"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "url": {
-                  "raw": "{{base_url}}/student/me",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "student",
-                    "me"
-                  ]
-                }
-              },
-              "response": []
-            }
-          ]
-        },
-        {
-          "name": "Courses",
-          "item": [
-            {
-              "name": "My Courses",
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{student_token}}"
-                  }
-                ],
-                "url": {
-                  "raw": "{{base_url}}/student/courses",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "student",
-                    "courses"
-                  ]
-                }
-              },
-              "response": []
-            }
-          ]
-        },
-        {
-          "name": "Attendance",
-          "item": [
-            {
-              "name": "Check In",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{student_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{student_token}}"
-                  }
-                ],
-                "url": {
-                  "raw": "{{base_url}}/student/attendance/check-in",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "student",
-                    "attendance",
-                    "check-in"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "Check Out",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{student_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{student_token}}"
-                  }
-                ],
-                "url": {
-                  "raw": "{{base_url}}/student/attendance/check-out/1",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "student",
-                    "attendance",
-                    "check-out",
-                    "1"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "My Attendance",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{student_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{student_token}}"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{base_url}}/student/attendance/110",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "student",
-                    "attendance",
-                    "110"
-                  ]
-                }
-              },
-              "response": []
-            }
-          ]
-        },
-        {
-          "name": "Grades",
-          "item": [
-            {
-              "name": "My Grades",
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{student_token}}"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "url": {
-                  "raw": "{{base_url}}/student/grades",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "student",
-                    "grades"
-                  ]
-                }
-              },
-              "response": []
-            }
-          ]
-        }
-      ]
+      "key": "student_token",
+      "value": ""
     }
   ]
 }
