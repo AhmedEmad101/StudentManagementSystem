@@ -16,12 +16,13 @@ class CreateStudentDTO
 
     public static function fromRequest(StoreStudentRequest $request): self
     {
+        $student_data = $request->validated();
         return new self(
-            $request->name,
-            $request->email,
-            $request->phone,
-            $request->password,
-            $request->status ?? 'active'
+            $student_data['name'],
+            $student_data['email'],
+            $student_data['phone'],
+            $student_data['password'],
+            $student_data['status'] ?? 'active'
         );
     }
 }
