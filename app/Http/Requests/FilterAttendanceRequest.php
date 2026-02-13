@@ -11,7 +11,7 @@ class FilterAttendanceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->user()->role === 'admin';
     }
 
     /**
@@ -22,8 +22,8 @@ class FilterAttendanceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['nullable', 'integer', 'exists:users,id'],
-            'date' => ['nullable', 'date'],
+            'date_from' => ['nullable', 'date_format:d/m/Y','before_or_equal:date_to'],
+            'date_to' => ['nullable','date_format:d/m/Y','after_or_equal:date_from'],
         ];
     }
 }

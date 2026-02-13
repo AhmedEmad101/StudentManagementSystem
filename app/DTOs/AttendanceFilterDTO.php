@@ -7,16 +7,16 @@ use Carbon\Carbon;
 class AttendanceFilterDTO
 {
     public function __construct(
-        public readonly ?Carbon $date,
-        public readonly ?int $user_id,
+        public readonly ?Carbon $date_from,
+        public readonly ?Carbon $date_to,
     ) {}
     public static function fromRequest(FilterAttendanceRequest $request): self
     {
         $data = $request->validated();
 
         return new self(
-            $data['date'] ?? null,
-           $data['user_id'] ?? null,
+            isset($data['date_from']) ? Carbon::createFromFormat('d/m/Y', $data['date_from']):null,
+            isset($data['date_to']) ? Carbon::createFromFormat('d/m/Y', $data['date_to']):null,
         );
     }
 }

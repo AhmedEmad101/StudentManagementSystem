@@ -3,36 +3,27 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Actions\Attendance\CreateAttendance;
+use App\Actions\Attendance\IndexAttendance;
 use App\Actions\Attendance\ShowAttendance;
 use App\Actions\Attendance\UpdateAttendance;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FilterAttendanceRequest;
 use App\Http\Resources\AttendanceResource;
 use App\Models\Attendance;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
-
+use App\DTOs\AttendanceFilterDTO;
 class AttendanceController extends Controller
 {
     use ApiResponseTrait;
 
-    public function index(Request $request)
+    public function index(IndexAttendance $index_attendance, FilterAttendanceRequest $request)
     {
-        $query = auth()->user()
-            ->attendances();
-        if ($request->filled('from')) {
-            $query->whereDate('date', '>=', $request->from);
-        }
-
-        if ($request->filled('to')) {
-            $query->whereDate('date', '<=', $request->to);
-        }
-
-        $attendances = $query->paginate(10);
-
+        $attendances = $index_attendance->execute(AttendanceFilterDTO::fromRequest($request), 10);
         return $this->successResponse(AttendanceResource::collection($attendances));
     }
 
-    public function show(Attendance $attendance, ShowAttendance $show_attendance)
+   public function show(Attendance $attendance, ShowAttendance $show_attendance)
     {
         $attendance = $show_attendance->execute($attendance);
 
