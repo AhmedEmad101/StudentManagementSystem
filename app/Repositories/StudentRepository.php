@@ -7,9 +7,9 @@ use App\Models\User;
 
 class StudentRepository implements StudentInterface
 {
-    public function index(array $relationships = [], int $pagination = 10)
+    public function index(array $relationships = [])
     {
-        return User::with($relationships)->where('role', 'student')->paginate($pagination);
+        return User::with($relationships)->where('role', 'student');
     }
 
     public function show($id)

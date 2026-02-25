@@ -8,22 +8,36 @@ use App\Filters\Student\StatusFilter;
 use App\Filters\Student\StudentFilterExecuter;
 use App\Models\User;
 use App\Repositories\StudentRepository;
-
+use Illuminate\Support\Facades\Cache;
 class IndexStudent
 {public function __construct(protected StudentRepository $student_repository) {}
-    public function execute(StudentFilterDTO $student_dto, int $pagination = 5)
+     public function execute(StudentFilterDTO $student_dto, int $pagination = 5)
     {
-        $query = $this->student_repository->index(['grade'], $pagination)->getCollection()->toQuery();
+        $cacheKey = $this->buildCacheKey($student_dto, $pagination);
 
-        $filters = new StudentFilterExecuter([
-            new SearchFilter,
-            new StatusFilter,
-        ]);
+        return Cache::remember($cacheKey, now()->addMinutes(5), function () use ($student_dto, $pagination) {
 
-        $filters->apply($query, $student_dto);
+            $query = $this->student_repository->index(['grades']);
 
-        return $query
-            ->orderByDesc('created_at')
-            ->paginate($pagination);
+            $filters = new StudentFilterExecuter([
+                new SearchFilter,
+                new StatusFilter,
+            ]);
+
+            $filters->apply($query, $student_dto);
+
+            return $query
+                ->orderByDesc('created_at')
+                ->paginate($pagination);
+        });
+    }
+      private function buildCacheKey(StudentFilterDTO $dto, int $pagination): string
+    {
+        return 'students:index:' . md5(json_encode([
+            'search'   => $dto->search ?? null,
+            'status'   => $dto->status ?? null,
+            'page'     => request()->get('page', 1),
+            'per_page' => $pagination,
+        ]));
     }
 }

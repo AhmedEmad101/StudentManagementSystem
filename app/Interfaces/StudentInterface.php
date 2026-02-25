@@ -6,7 +6,7 @@ use App\Models\User;
 
 interface StudentInterface
 {
-    public function index(array $relationships = [], int $pagination = 5);
+    public function index(array $relationships = []);
 
     public function show(int $id);
 
