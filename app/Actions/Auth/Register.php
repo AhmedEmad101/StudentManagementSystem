@@ -3,7 +3,9 @@
 namespace App\Actions\Auth;
 
 use App\DTOs\CreateStudentDTO;
+use App\Jobs\SendStudentWelcomeEmail;
 use App\Repositories\StudentRepository;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\DB;
 
 class Register
@@ -12,8 +14,7 @@ class Register
 
     public function execute(CreateStudentDTO $dto)
     {
-        return DB::transaction(function () use ($dto) {
-            return $this->repository->store([
+       $student = $this->repository->store([
                 'name' => $dto->name,
                 'email' => $dto->email,
                 'phone' => $dto->phone,
@@ -21,6 +22,7 @@ class Register
                 'status' => $dto->status,
                 'role' => 'student',
             ]);
-        });
+        SendStudentWelcomeEmail::dispatch($student);
+     return $student;
     }
 }

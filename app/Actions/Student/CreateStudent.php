@@ -3,6 +3,7 @@
 namespace App\Actions\Student;
 
 use App\DTOs\CreateStudentDTO;
+use App\Jobs\SendStudentWelcomeEmail;
 use App\Repositories\StudentRepository;
 use Illuminate\Support\Facades\DB;
 
@@ -12,8 +13,7 @@ class CreateStudent
 
     public function execute(CreateStudentDTO $dto)
     {
-        return DB::transaction(function () use ($dto) {
-            return $this->repository->store([
+       $student = $this->repository->store([
                 'name' => $dto->name,
                 'email' => $dto->email,
                 'phone' => $dto->phone,
@@ -21,6 +21,7 @@ class CreateStudent
                 'status' => $dto->status,
                 'role' => 'student',
             ]);
-        });
+        SendStudentWelcomeEmail::dispatch($student);
+        return $student;
     }
 }
