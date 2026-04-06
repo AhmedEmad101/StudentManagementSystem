@@ -11,7 +11,7 @@ Artisan::command('try_ai', function () {
     $prompt = text('Prompt:');
     $response = PersonalAssistant::make()
     ->continue('first_conversation', as:$user)
-    ->prompt('what is my name');
+    ->prompt($prompt);
     $this->info((string) $response);
     }
 });
